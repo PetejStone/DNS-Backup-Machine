@@ -358,3 +358,14 @@ tr.domain-item td > td {
   border: 1px solid #000;
   padding: 10px;
 }
+
+.req-api {
+  margin: 0px;
+  margin-top: 1rem;
+  font-size: 12px;
+}
+
+.api-link {
+  color: rgba(253, 31, 31, 0.61);
+  font-weight: 600;
+}

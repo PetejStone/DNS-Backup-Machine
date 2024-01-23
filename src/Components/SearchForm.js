@@ -25,7 +25,9 @@ const SearchForm = ({queryChange}) => {
              name="apiKey" 
              placeholder="Enter Your API Key Here" 
              required
-             />             
+             />      
+             <p className="req-api">This App requires a Security Trails API Key</p>
+             <a className="api-link" href="https://securitytrails.com/app/signup?plan=api-0" target="_blank">Get One Free Here</a>       
       <button type="submit" id="submit" className="search-button" ><i className="material-icons icn-search">search</i></button>
     </form>      
   );
