@@ -18,6 +18,7 @@ function App() {
   const [noDomains,setNoDomains] = useState(false);
   const [domainCount, setDomainCount] = useState(0);
   const [currentCount, setCurrentCount] = useState(0)
+  
   useEffect(() => {
 
     let activeFetch = true;
