@@ -5,14 +5,13 @@ import axios from 'axios'
 
 
 function App() {
-  const [gifs, setGifs] = useState([]);
+
   const [query,setQuery] = useState('');
   const [apiKey,setApiKey] = useState('');
   const[fetching,setFetching] = useState(true);
   const [domains, setDomains] = useState([]);
-  const [finalList,setFinalList] = useState([]);
+
   const [dns, setDns] = useState([]);
-  const [currentDomain,setCurrentDomain] = useState('');
   const [initialFetchCompleted, setInitialFetchCompleted] = useState(false);
   const [building,setBuilding] = useState(false);
   const [noDomains,setNoDomains] = useState(false);
@@ -41,11 +40,11 @@ function App() {
 
             console.log('data',response)
          
-            let temp = [query]
+            let temp = [query, `_dmarc.${query}`, `ctct1._domainkey.${query}`, `ctct2._domainkey.${query}`, `google_domainkey.${query}`]
             if (response.data.subdomain_count !== 0 ) {
               setNoDomains(false)
               response.data.subdomains.map(subdomain => temp.push(`${subdomain}.${query}`) )
-              setDomainCount(response.data.subdomain_count + 1)
+              setDomainCount(response.data.subdomain_count + 5)
             } else {
               setNoDomains(true)
             }
@@ -91,7 +90,7 @@ function App() {
     setBuilding(true)
     for (const subdomain of subdomains) {
       try {
-        const response = await axios.get(`https://api.codetabs.com/v1/proxy?quest=https://networkcalc.com/api/dns/lookup/${subdomain}`, {
+        const response = await axios.get(`https://corsproxy.io/?https://networkcalc.com/api/dns/lookup/${subdomain}`, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -123,6 +122,8 @@ function App() {
   useEffect(() => {
     // This useEffect will run after the initial fetch is completed
     if (initialFetchCompleted) {
+
+      //Initial stage 
       getDNS(domains);
     }
   }, [initialFetchCompleted, domains]);

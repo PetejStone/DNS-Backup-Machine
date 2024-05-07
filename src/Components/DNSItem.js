@@ -28,7 +28,7 @@ const DNSItem = ({domain,values,noDomains,currentCount}) => {
                       <tbody>
                         {value.map((item, index) => (
                           <tr key={index} className="domain-item">
-                            <td style={{ padding: '8px', textAlign: 'left' }}>
+                            <td style={{ padding: '8px', textAlign: 'left', wordWrap: 'break-word', wordBreak: 'break-all' }}>
                               {typeof item === 'object' ? (
                                 Object.entries(item).map(([prop, val], index) => (
                                   <div key={prop}>
