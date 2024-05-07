@@ -1,3 +1,6 @@
+# To use application, you will need an API Key (available for free) from www.SecurityTrails.com
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
