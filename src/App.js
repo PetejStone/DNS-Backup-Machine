@@ -120,7 +120,7 @@ function App() {
 
 
   useEffect(() => {
-    // This useEffect will run after the initial fetch is completed
+    // This useEffect will run after the initial fetch has completed
     if (initialFetchCompleted) {
 
       //Initial stage 
