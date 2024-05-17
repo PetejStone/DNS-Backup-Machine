@@ -40,7 +40,10 @@ function App() {
 
             console.log('data',response)
          
-            let temp = [query, `_dmarc.${query}`, `ctct1._domainkey.${query}`, `ctct2._domainkey.${query}`, `google_domainkey.${query}`]
+            let temp = [query, `_dmarc.${query}`, `ctct1._domainkey.${query}`, `ctct2._domainkey.${query}`, `google_domainkey.${query}`, 
+            `s1._domainkey.${query}`, `s2._domainkey.${query}`, `sable._domainkey.${query}`, `selector1._domainkey.${query}`, `selector2._domainkey.${query}`,
+            `selector3._domainkey.${query}`, `dkim._domainkey.${query}`, `default._domainkey.${query}`,`mail._domainkey.${query}` 
+          ]
             if (response.data.subdomain_count !== 0 ) {
               setNoDomains(false)
               response.data.subdomains.map(subdomain => temp.push(`${subdomain}.${query}`) )
