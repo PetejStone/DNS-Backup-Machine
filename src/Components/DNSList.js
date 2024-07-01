@@ -2,7 +2,7 @@ import React from 'react';
 
 import DNSItem from './DNSItem';
 import  loading from '../Images/loader-icon.png'
-const DNSList = ({dns,noDomains,domainCount,currentCount}) => { 
+const DNSList = ({dns,noDomains,domainCount,currentCount,fetchServer}) => { 
 
     // console.log('calling from DNSLISt', dns)
 
@@ -20,8 +20,8 @@ const DNSList = ({dns,noDomains,domainCount,currentCount}) => {
     
   return(
     <>
-    {dns.length > 0  ? 
-      <div>
+    {dns.length > 0   ? 
+     <div>  
         <h3>{dns.length}/{domainCount} subdomains had DNS Records</h3>
         <div>{data}</div>
       </div>

@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.search-button:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.search-button {
+  cursor: pointer;
+  transition: all .3s;
+  margin-left: 0px;
+}
