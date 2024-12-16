@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  functions = ".netlify/functions"  # specify the correct path if different
+
+[dev]
+  command = "npm run dev"
+  targetPort = 3000  # Port where your app is running (if different, set accordingly)
+  port = 8888        # Port where Netlify Dev communicates
+  functions = ".netlify/functions"  # specify the correct path for dev server

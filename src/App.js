@@ -101,47 +101,48 @@ function App() {
     setFetching(true)
     setApiKey(apiKey)
     setFetchServer(true) 
-    // SetQueryStarted(true);    
+    // SetQueryStarted(true) ;    
   }
 
   
-  const getDNS = async (subdomains) => {
-    console.log('getDNS of', subdomains);
-    let temp = [];
-    setBuilding(true)
-    for (const subdomain of subdomains) {
-      try {
-        const response = await axios.get(`https://thingproxy.freeboard.io/fetch/https://networkcalc.com/api/dns/lookup/${subdomain}`, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        setCurrentCount(prevCount => prevCount + 1)
-     
-        if (response.data.status !== "NO_RECORDS") {
-          let object = {
-            [response.data.hostname]: response.data.records
-          };
-          temp.push(object);
-          console.log(temp);
-        }
-      } catch (error) {
-        setCurrentCount(prevCount => prevCount + 1)
-            
-        console.log('Error fetching and getting data', error);
+const getDNS = async (subdomains) => {
+  console.log('getDNS of', subdomains);
+  let temp = [];
+  setBuilding(true);
+  for (const subdomain of subdomains) {
+    try {
+      // Use encodeURIComponent to safely encode the subdomain URL
+      const encodedSubdomain = encodeURIComponent(subdomain);
+      const response = await axios.get(`https://api.allorigins.win/raw?url=https://networkcalc.com/api/dns/lookup/${encodedSubdomain}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       
-      }
-  
-      // Add a delay of 5 seconds before making the next API call
-      await new Promise(resolve => setTimeout(resolve, 500));
-    }
-  
-    console.log('DNS RECORDS ARE ALL HERE', temp);
-  
-    // Now that all asynchronous operations are done, update the state
-    setDns(temp);
+      setCurrentCount(prevCount => prevCount + 1);
 
-  };
+      if (response.data.status !== "NO_RECORDS") {
+        let object = {
+          [response.data.hostname]: response.data.records,
+        };
+        temp.push(object);
+        console.log(temp);
+      }
+    } catch (error) {
+      setCurrentCount(prevCount => prevCount + 1);
+      console.log('Error fetching and getting data', error);
+    }
+
+    // Add a delay of 5 seconds before making the next API call
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+
+  console.log('DNS RECORDS ARE ALL HERE', temp);
+
+  // Now that all asynchronous operations are done, update the state
+  setDns(temp);
+};
+
 
 
   useEffect(() => {
