@@ -111,7 +111,7 @@ function App() {
     setBuilding(true)
     for (const subdomain of subdomains) {
       try {
-        const response = await axios.get(`https://corsproxy.io/?https://networkcalc.com/api/dns/lookup/${subdomain}`, {
+        const response = await axios.get(`https://thingproxy.freeboard.io/fetch/https://networkcalc.com/api/dns/lookup/${subdomain}`, {
           headers: {
             'Content-Type': 'application/json'
           }
