@@ -113,7 +113,7 @@ const getDNS = async (subdomains) => {
     try {
       // Use encodeURIComponent to safely encode the subdomain URL
       const encodedSubdomain = encodeURIComponent(subdomain);
-      const response = await axios.get(`https://api.codetabs.com/v1/proxy?quest=https://networkcalc.com/api/dns/lookup/${encodedSubdomain}`, {
+      const response = await axios.get(`https://thingproxy.freeboard.io/fetch/https://networkcalc.com/api/dns/lookup/${encodedSubdomain}`, {
         headers: {
           'Content-Type': 'application/json',
         },
